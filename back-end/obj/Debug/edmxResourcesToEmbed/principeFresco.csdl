@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="principeFrescoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="idRol" Type="Int32" Nullable="false" />
+    <Property Name="idMoneda" Type="Int32" />
+    <NavigationProperty Name="Moneda" Relationship="Self.FK__Cliente__idMoned__4316F928" FromRole="Cliente" ToRole="Moneda" />
+    <NavigationProperty Name="Rol" Relationship="Self.FK__Cliente__idRol__4222D4EF" FromRole="Cliente" ToRole="Rol" />
+    <NavigationProperty Name="PrendaUSadas" Relationship="Self.FK__PrendaUSa__idCli__4F7CD00D" FromRole="Cliente" ToRole="PrendaUSada" />
+    <NavigationProperty Name="Transaccions" Relationship="Self.FK__Transacci__idCli__49C3F6B7" FromRole="Cliente" ToRole="Transaccion" />
+  </EntityType>
+  <EntityType Name="Coleccion">
+    <Key>
+      <PropertyRef Name="idcoleccion" />
+    </Key>
+    <Property Name="idcoleccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="descipcion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Productoes" Relationship="Self.FK__Producto__colecc__45F365D3" FromRole="Coleccion" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="idEstado" />
+    </Key>
+    <Property Name="idEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PrendaUSadas" Relationship="Self.FK__PrendaUSa__idEst__5070F446" FromRole="Estado" ToRole="PrendaUSada" />
+  </EntityType>
+  <EntityType Name="Evento">
+    <Key>
+      <PropertyRef Name="idEvento" />
+    </Key>
+    <Property Name="idEvento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Tiendas" Relationship="Self.FK__Tienda__idevento__3F466844" FromRole="Evento" ToRole="Tienda" />
+  </EntityType>
+  <EntityType Name="Moneda">
+    <Key>
+      <PropertyRef Name="idMoneda" />
+    </Key>
+    <Property Name="idMoneda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" />
+    <NavigationProperty Name="Clientes" Relationship="Self.FK__Cliente__idMoned__4316F928" FromRole="Moneda" ToRole="Cliente" />
+  </EntityType>
+  <EntityType Name="PrendaUSada">
+    <Key>
+      <PropertyRef Name="idPrenda" />
+    </Key>
+    <Property Name="idPrenda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCliente" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="idEstado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__PrendaUSa__idCli__4F7CD00D" FromRole="PrendaUSada" ToRole="Cliente" />
+    <NavigationProperty Name="Estado" Relationship="Self.FK__PrendaUSa__idEst__5070F446" FromRole="PrendaUSada" ToRole="Estado" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="idProducto" />
+    </Key>
+    <Property Name="idProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="coleccion" Type="Int32" Nullable="false" />
+    <Property Name="stock" Type="Int32" Nullable="false" />
+    <Property Name="idTienda" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Coleccion1" Relationship="Self.FK__Producto__colecc__45F365D3" FromRole="Producto" ToRole="Coleccion" />
+    <NavigationProperty Name="Tienda" Relationship="Self.FK__Producto__idTien__46E78A0C" FromRole="Producto" ToRole="Tienda" />
+    <NavigationProperty Name="Transaccions" Relationship="Self.FK__Transacci__idPro__4AB81AF0" FromRole="Producto" ToRole="Transaccion" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="idRol" />
+    </Key>
+    <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="beneficios" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Clientes" Relationship="Self.FK__Cliente__idRol__4222D4EF" FromRole="Rol" ToRole="Cliente" />
+  </EntityType>
+  <EntityType Name="Tienda">
+    <Key>
+      <PropertyRef Name="idTienda" />
+    </Key>
+    <Property Name="idTienda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idevento" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="contacto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Evento" Relationship="Self.FK__Tienda__idevento__3F466844" FromRole="Tienda" ToRole="Evento" />
+    <NavigationProperty Name="Productoes" Relationship="Self.FK__Producto__idTien__46E78A0C" FromRole="Tienda" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Transaccion">
+    <Key>
+      <PropertyRef Name="idTransaccion" />
+    </Key>
+    <Property Name="idTransaccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCliente" Type="Int32" Nullable="false" />
+    <Property Name="idProducto" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__Transacci__idCli__49C3F6B7" FromRole="Transaccion" ToRole="Cliente" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK__Transacci__idPro__4AB81AF0" FromRole="Transaccion" ToRole="Producto" />
+  </EntityType>
+  <Association Name="FK__Cliente__idMoned__4316F928">
+    <End Role="Moneda" Type="Self.Moneda" Multiplicity="0..1" />
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Moneda">
+        <PropertyRef Name="idMoneda" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="idMoneda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cliente__idRol__4222D4EF">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PrendaUSa__idCli__4F7CD00D">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="PrendaUSada" Type="Self.PrendaUSada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="PrendaUSada">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacci__idCli__49C3F6B7">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="Transaccion">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Producto__colecc__45F365D3">
+    <End Role="Coleccion" Type="Self.Coleccion" Multiplicity="1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coleccion">
+        <PropertyRef Name="idcoleccion" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="coleccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PrendaUSa__idEst__5070F446">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+    <End Role="PrendaUSada" Type="Self.PrendaUSada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="PrendaUSada">
+        <PropertyRef Name="idEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tienda__idevento__3F466844">
+    <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
+    <End Role="Tienda" Type="Self.Tienda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Evento">
+        <PropertyRef Name="idEvento" />
+      </Principal>
+      <Dependent Role="Tienda">
+        <PropertyRef Name="idevento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Producto__idTien__46E78A0C">
+    <End Role="Tienda" Type="Self.Tienda" Multiplicity="1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tienda">
+        <PropertyRef Name="idTienda" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="idTienda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacci__idPro__4AB81AF0">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="idProducto" />
+      </Principal>
+      <Dependent Role="Transaccion">
+        <PropertyRef Name="idProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="principeFrescoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+    <EntitySet Name="Coleccions" EntityType="Self.Coleccion" />
+    <EntitySet Name="Estadoes" EntityType="Self.Estado" />
+    <EntitySet Name="Eventoes" EntityType="Self.Evento" />
+    <EntitySet Name="Monedas" EntityType="Self.Moneda" />
+    <EntitySet Name="PrendaUSadas" EntityType="Self.PrendaUSada" />
+    <EntitySet Name="Productoes" EntityType="Self.Producto" />
+    <EntitySet Name="Rols" EntityType="Self.Rol" />
+    <EntitySet Name="Tiendas" EntityType="Self.Tienda" />
+    <EntitySet Name="Transaccions" EntityType="Self.Transaccion" />
+    <AssociationSet Name="FK__Cliente__idMoned__4316F928" Association="Self.FK__Cliente__idMoned__4316F928">
+      <End Role="Moneda" EntitySet="Monedas" />
+      <End Role="Cliente" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cliente__idRol__4222D4EF" Association="Self.FK__Cliente__idRol__4222D4EF">
+      <End Role="Rol" EntitySet="Rols" />
+      <End Role="Cliente" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PrendaUSa__idCli__4F7CD00D" Association="Self.FK__PrendaUSa__idCli__4F7CD00D">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="PrendaUSada" EntitySet="PrendaUSadas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacci__idCli__49C3F6B7" Association="Self.FK__Transacci__idCli__49C3F6B7">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Transaccion" EntitySet="Transaccions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Producto__colecc__45F365D3" Association="Self.FK__Producto__colecc__45F365D3">
+      <End Role="Coleccion" EntitySet="Coleccions" />
+      <End Role="Producto" EntitySet="Productoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PrendaUSa__idEst__5070F446" Association="Self.FK__PrendaUSa__idEst__5070F446">
+      <End Role="Estado" EntitySet="Estadoes" />
+      <End Role="PrendaUSada" EntitySet="PrendaUSadas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tienda__idevento__3F466844" Association="Self.FK__Tienda__idevento__3F466844">
+      <End Role="Evento" EntitySet="Eventoes" />
+      <End Role="Tienda" EntitySet="Tiendas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Producto__idTien__46E78A0C" Association="Self.FK__Producto__idTien__46E78A0C">
+      <End Role="Tienda" EntitySet="Tiendas" />
+      <End Role="Producto" EntitySet="Productoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacci__idPro__4AB81AF0" Association="Self.FK__Transacci__idPro__4AB81AF0">
+      <End Role="Producto" EntitySet="Productoes" />
+      <End Role="Transaccion" EntitySet="Transaccions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
