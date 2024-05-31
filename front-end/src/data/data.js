@@ -5,56 +5,25 @@
 
 export const productCardInfo = [
     {
-        id: crypto.randomUUID(),
-        image: "https://i.ibb.co/dJFYw23/Frame-20.png",
-        title: "Naked cakes",
+        id: 1,
+        image: "https://i.ibb.co/cCpYMc5/Rectangle-4.png",
+        title: "Pose For It Tee",
         price: 288,
         description: "Pensando en los graves problemas de obesidad de la actualidad, el naked cake reduce la cantidad de calorías para consumo"
     },
     {
-        id: crypto.randomUUID(),
-        image: "https://i.ibb.co/pryrnG1/Frame-17.png",
-        title: "Basic vanilla cake",
+        id: 2,
+        image: "https://i.ibb.co/Y2sNJTv/Frame-20-1.png",
+        title: "Fresh Black Tie-Dye Hoodie",
         price: 288,
         description: "Pensando en los graves problemas de obesidad de la actualidad, el naked cake reduce la cantidad de calorías para consumo"
     },
     {
-        id: crypto.randomUUID(),
-        image: "https://i.ibb.co/sjVfjzc/Frame-16.png",
-        title: "Clinkers cake",
+        id: 3,
+        image: "https://i.ibb.co/g6X1nX5/Frame-14.png",
+        title: "Fresh Stripe Sweater",
         price: 288,
         description: "Apto para coronar cualquier mesa de cumpleaños. Dos deliciosas capas de pastel de vainilla y un centro de pastel de queso..."
-    }
-]
-
-export const mostSearchInfo = [
-    {
-        id: crypto.randomUUID(),
-        title: "Pastel Chocoroles", 
-        price: 418,
-        description: "Delicioso pastel elaborado con pan de chocolate, relleno de mermelada de piña, crema y...",
-        image: "https://i.ibb.co/6trZWTM/Rectangle-1.png"
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "Dona Osito", 
-        price: 28,
-        description: "Dona francesa de levadura frita, de masa esponjosa, de sabor dulce con notas especiadas, decorada con divertido motivo...",
-        image: "https://i.ibb.co/DkfTGwC/Rectangle-2.png"
-    }, 
-    {
-        id: crypto.randomUUID(),
-        title: "Pastel Bubulubu", 
-        price: 288,
-        description: "Delicioso pastelito relleno con suave malvavisco en combinación con mermelada de fresa, pan de chocolate, un toque de jarabe...",
-        image: "https://i.ibb.co/NZC2tZx/Rectangle-3.png"
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "Dona Gallinita", 
-        price: 50,
-        description: "Dona francesa de levadura frita, de masa esponjosa, de sabor dulce con notas especiadas, decorada con divertido motivo...",
-        image: "https://i.ibb.co/SKVYx9W/Rectangle-4.png"
     }
 ]
 
@@ -78,3 +47,46 @@ export const users = [
         testimonio: "Siempre encuentro lo último en tendencias en esta tienda. La variedad y el estilo de la ropa son impresionantes. Además, las descripciones en la web son precisas y me ayudan a elegir exactamente lo que necesito. ¡Muy recomendado!"
     }
 ]
+
+
+export const products = [
+    {
+      id: 2,
+      title: "Fresh Stripe Sweater",
+      price: 85.00,
+      images: [
+        "https://i.ibb.co/Y2sNJTv/Frame-20-1.png",
+        "https://i.ibb.co/c1LrVbB/Frame-22.png",
+        "https://i.ibb.co/RzWZv6q/Frame-21.png"
+      ],
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      description: "Déjeles saber que eres la realeza de los años 90 con este suéter oficial con el patrón de la corona de El príncipe fresco. ¡Proyecta vibraciones vintage que aprobaría el tío Phil! Con el logo tejido de El príncipe fresco en el pecho. Sudadera de cuello redondo con estampado de corona en azul marino y cuello y banda de cintura blancos ribeteados. Mezcla de algodón/poliéster.",
+      sizeChartLink: "#"
+    },
+    {
+      id: 3,
+      title: "Fresh Black Tie-Dye Hoodie",
+      price: 75.00,
+      images: [
+        "https://i.ibb.co/g6X1nX5/Frame-14.png",
+        "https://i.ibb.co/QMgYzMD/Frame-16-1.png",
+        "https://i.ibb.co/JzQsYbC/Frame-15.png"
+      ],
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      description: "Mantén tu estilo fresco con esta sudadera con capucha de tie-dye negra. Perfecta para los días fríos y para hacer una declaración de moda. Fabricada con materiales de alta calidad para asegurar comodidad y durabilidad.",
+      sizeChartLink: "#"
+    },
+    {
+      id: 1,
+      title: "Pose For It Tee",
+      price: 45.00,
+      images: [
+        "https://i.ibb.co/cCpYMc5/Rectangle-4.png",
+        "https://i.ibb.co/3h68GtQ/Frame-18.png",
+        "https://i.ibb.co/mDpkdW8/Frame-19.png"
+      ],
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      description: "Expresa tu estilo con esta camiseta gráfica 'Pose For It'. Confeccionada en algodón suave para mayor comodidad y con un diseño llamativo que seguramente atraerá miradas.",
+      sizeChartLink: "#"
+    }
+  ];

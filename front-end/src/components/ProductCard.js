@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
    max-width: 303px
@@ -22,11 +23,20 @@ const FontElement = styled.h2`
 `
 
 const ProductCard = ({ data }) => {
+    const navigate = useNavigate();
+    const { image, id, title, price } = data;
 
-    const { image, id, title, price } = data
+    const handleClick = () => {
+        const isAuthenticated = localStorage.getItem('usuario');
+
+        if (isAuthenticated) {
+            localStorage.setItem('selectedProductId', id);
+            navigate('/product'); 
+        }
+    };
 
     return (
-        <Container id={id}>
+        <Container id={id} onClick={handleClick}>
             <Image src={image} alt={title} />
             <ContainerTextHeader>
                 <FontElement main>{title}</FontElement>

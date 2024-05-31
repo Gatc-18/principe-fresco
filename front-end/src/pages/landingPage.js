@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Principal from './Containers/principal';
 import Productos from './Containers/productos';
 import Testimonials from './Containers/testimonials';
+import Footer from '../components/footer';
 
 const LandingPage = () => {
 
@@ -13,6 +14,7 @@ const LandingPage = () => {
             <Principal/>
             <Productos/>
             <Testimonials/>
+            <Footer/>
         </>
     )
 

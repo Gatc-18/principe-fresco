@@ -11,6 +11,10 @@ const NavbarContainer = styled.nav`
   background-color: #fff; /* Blanco */
 `;
 
+const LogoLink = styled(Link)`
+  text-decoration: none;
+`;
+
 const Logo = styled.img`
   width: 200px;
   height: auto;
@@ -59,12 +63,15 @@ const Navbar = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('usuario');
+        localStorage.removeItem('selectedProductId');
         navigate('/');
     };
 
     return (
         <NavbarContainer>
-            <Logo src={LogoMain} alt="Logo" />
+            <LogoLink to={isAuthenticated ? "/dashboard" : "/"}>
+                <Logo src={LogoMain} alt="Logo" />
+            </LogoLink>
             <div>
                 {isAuthenticated ? (
                     <LogoutButton onClick={handleLogout}>Cerrar Sesión</LogoutButton>
